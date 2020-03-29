@@ -21,10 +21,11 @@ window.Snap = async (src, dest) => {
     ctx.drawImage(video, 0, 0, 640, 480);
 }
 
-// Get image bytes
-window.GetImageData = async (el) => {
-    let ctx = get2DContext(el);
-    return ctx.getImageData(0, 0, 640, 480).data;
+// Get image as base64 string
+window.GetImageData = async (el, format) => {
+    let canvas = document.getElementById(el);
+    let dataUrl = canvas.toDataURL(format)
+    return dataUrl.split(',')[1];
 }
 
 // Helper functions

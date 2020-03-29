@@ -29,7 +29,7 @@
         Console.WriteLine("Taking picture");
         await JsRuntime.InvokeVoidAsync("Snap", "video", "capturedImage");
 
-        // This does not work at the moment because of SignalR
-        //var imageBytes = await JsRuntime.InvokeAsync<object>("GetImageData", "capturedImage");
+        var imageBytes = await JsRuntime.InvokeAsync<string>("GetImageData", "capturedImage", "image/jpeg");
+        Console.WriteLine(imageBytes);
     }
 } 
